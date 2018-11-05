@@ -15,6 +15,7 @@ export class HomePage {
 
 	private image = PLACEHOLDER_IMAGE;
 	timeStamp: any;
+	images: any[] = [];
 
 	constructor(public navCtrl: NavController,
 				  private camera: Camera) {
@@ -34,7 +35,8 @@ export class HomePage {
 		this.camera.getPicture(options).then((imageData) => {
 			if (imageData) {
 				this.image = 'data:image/jpeg;base64,' + imageData;   
-				this.timeStamp = Date.now();    
+				this.timeStamp = Date.now(); 
+				this.images.push({image: this.image, timeStamp: this.timeStamp})
 			} else {
 				this.image = PLACEHOLDER_IMAGE;
 				this.timeStamp = null;
